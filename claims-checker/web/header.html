@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="site-container site-masthead">
+    <a class="site-brand" href="/" aria-label="Claims Lab home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      <span>claims<span>lab</span><sup>01</sup></span>
+    </a>
+    <span class="site-caption">AN OPEN-BOOK PYTHON DEMO</span>
+    <div class="site-actions">
+      <span class="connection workbench-only" id="connection"><span class="status-dot"></span><span id="connectionLabel">Connecting to Python</span></span>
+      <button class="button button-quiet theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+        <svg class="icon moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4 8.5 8.5 0 1 0 20 14Z"/></svg>
+        <svg class="icon sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        <span data-theme-label>Dark mode</span>
+      </button>
+      <button class="button button-quiet workbench-only" id="presentButton" type="button" aria-pressed="false">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/></svg><span>Present</span>
+      </button>
+    </div>
+  </div>
+  <nav class="site-container site-tabs" aria-label="All sections">
+    <a class="site-tab" href="/" data-view="home">Home</a>
+    <a class="site-tab" href="/#about" data-view="about">The idea</a>
+    <a class="site-tab" href="/#how-it-works" data-view="how">How it works</a>
+    <a class="site-tab" href="/#live-example" data-view="example">Live example</a>
+    <a class="site-tab" href="/lab" data-view="workbench" data-workbench-link>Workbench</a>
+    <a class="site-tab" href="/lab#claims-section" data-view="claims" data-workbench-link>Claims</a>
+    <a class="site-tab" href="/lab?tab=checks#claim-inspector" data-view="checks" data-workbench-link>Validation</a>
+    <a class="site-tab" href="/lab?tab=raw#claim-inspector" data-view="raw" data-workbench-link>Raw data</a>
+    <a class="site-tab" href="/lab?tab=source#claim-inspector" data-view="source" data-workbench-link>Python source</a>
+    <a class="site-tab" href="/lab#trace-section" data-view="trace" data-workbench-link>Execution trace</a>
+  </nav>
+  <span class="sr-only" id="themeStatus" role="status" aria-live="polite"></span>
+</header>

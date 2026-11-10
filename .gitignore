@@ -1,0 +1,39 @@
+# Python bytecode and interpreter caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments, including ones created at the repository root
+.venv/
+venv/
+env/
+ENV/
+
+# Test, coverage, type-checker, and linter output
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging output
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Local environment settings and package-index credentials
+.env
+.env.*
+!.env.example
+.pypirc
+
+# Local logs and operating-system metadata
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini

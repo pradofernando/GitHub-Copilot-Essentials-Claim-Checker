@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153d3b">
+  <title>Claims Lab | The workbench</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23153d3b'/%3E%3Cpath d='M9 10h14v4H9zm0 8h6v4H9zm10 0h4v4h-4z' fill='%239aebc4'/%3E%3C/svg%3E">
+  <script src="/ui.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body class="workbench-page">
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 19"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 13 8-13 8z"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1 7M3 4v6h6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2zM12 9v5m0 3v.1"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 12h5l3-8 4 16 3-8h5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11h-7v-7h-4v7H3z"/></symbol>
+  </svg>
+
+  <!-- SITE_HEADER -->
+
+    <main id="workspace" tabindex="-1">
+      <section class="hero" aria-labelledby="pageTitle">
+        <div>
+          <div class="eyebrow"><span class="tiny-square"></span> THE OPEN-BOOK WORKBENCH <span class="edition">CLASSROOM EDITION</span></div>
+          <h1 id="pageTitle">Your claims.<br>An <em>open book.</em></h1>
+          <p>The same little claims, with all the evidence in view.<br class="desktop-break"> Explore the fields, follow a function, and see what Python returns.</p>
+        </div>
+        <div class="hero-controls">
+          <span class="dataset-chip"><svg class="icon"><use href="#i-file"/></svg>sample_claims.csv <span>FAKE DATA</span></span>
+          <div class="run-controls">
+            <button class="button button-secondary" id="replayButton" type="button" disabled><svg class="icon"><use href="#i-replay"/></svg><span>Replay trace</span></button>
+            <button class="button button-primary" id="runButton" type="button"><svg class="icon"><use href="#i-play"/></svg><span>Run checks</span></button>
+          </div>
+          <span class="run-caption">Your saved Python code. A fresh run, every time.</span>
+        </div>
+      </section>
+
+      <div class="connection-alert" id="connectionAlert" role="alert" hidden></div>
+      <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+
+      <section class="metrics" aria-label="Batch at a glance">
+        <article class="metric-card">
+          <div class="metric-heading"><span>Claims in this batch</span><svg class="icon"><use href="#i-file"/></svg></div>
+          <div class="metric-value" id="loadedCount">--</div>
+          <div class="metric-foot" id="datasetDetail">Reading local sample data</div>
+          <div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="metric-card metric-valid">
+          <div class="metric-heading"><span>Pass validation</span><svg class="icon"><use href="#i-check"/></svg></div>
+          <div class="metric-value" id="validCount">--</div>
+          <div class="metric-foot" id="validDetail">Waiting for Python</div>
+          <div class="metric-meter" aria-hidden="true"><span id="validMeter"></span></div>
+        </article>
+        <article class="metric-card metric-flagged">
+          <div class="metric-heading"><span>Flagged for review</span><svg class="icon"><use href="#i-alert"/></svg></div>
+          <div class="metric-value" id="flaggedCount">--</div>
+          <div class="metric-foot" id="flaggedDetail">No checks run yet</div>
+          <div class="metric-meter" aria-hidden="true"><span id="flaggedMeter"></span></div>
+        </article>
+        <article class="metric-card metric-total">
+          <div class="metric-heading"><span>Total billed</span><span class="currency-icon">$</span></div>
+          <div class="metric-value money" id="billedTotal">&mdash;</div>
+          <div class="metric-foot" id="billedDetail">Returned by the Python report</div>
+          <span class="metric-source">report.total_billed()</span>
+        </article>
+      </section>
+
+      <section class="pipeline" aria-label="Python execution pipeline">
+        <div class="pipeline-label"><svg class="icon"><use href="#i-pulse"/></svg><span>THE PIPELINE</span></div>
+        <div class="pipeline-stages" id="pipelineStages"></div>
+        <span class="run-state" id="runState">Ready to explore</span>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="panel claims-panel" id="claims-section" aria-labelledby="claimsTitle">
+          <div class="panel-heading">
+            <div><div class="eyebrow muted">01 / THE INPUT</div><h2 id="claimsTitle">Claims explorer <span class="count-bubble" id="tableCount">0</span></h2></div>
+            <a class="icon-button" href="/sample.csv" download="sample_claims.csv" aria-label="Download synthetic sample CSV" title="Download sample CSV"><svg class="icon"><use href="#i-download"/></svg></a>
+          </div>
+          <div class="table-toolbar">
+            <div class="filter-group" role="group" aria-label="Filter claims">
+              <button class="filter active" data-filter="all" type="button" aria-pressed="true">All <span id="allFilterCount">0</span></button>
+              <button class="filter" data-filter="flagged" type="button" aria-pressed="false">Flagged <span id="flaggedFilterCount">--</span></button>
+              <button class="filter" data-filter="valid" type="button" aria-pressed="false">Valid <span id="validFilterCount">--</span></button>
+            </div>
+            <label class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Find a claim..." aria-label="Search claims" autocomplete="off"></label>
+          </div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable claims table">
+            <table>
+              <thead><tr><th scope="col">CLAIM</th><th scope="col">PROVIDER / STATE</th><th scope="col">CODE</th><th scope="col" class="amount-cell">BILLED</th><th scope="col">RESULT</th></tr></thead>
+              <tbody id="claimsBody"></tbody>
+            </table>
+            <div class="table-empty" id="tableEmpty" hidden>No matching claims. Try another search or filter.</div>
+          </div>
+          <div class="panel-footer"><span id="tableFooter">Loading the sample batch...</span><span><span class="status-dot"></span> 100% synthetic</span></div>
+        </section>
+
+        <section class="panel inspector" id="claim-inspector" aria-labelledby="inspectorTitle">
+          <div class="panel-heading">
+            <div><div class="eyebrow muted">02 / THE DECISION</div><h2 id="inspectorTitle">Inside a claim</h2></div>
+            <span class="inspector-marker" aria-hidden="true"><svg class="icon"><use href="#i-search"/></svg></span>
+          </div>
+          <div class="selected-claim" id="selectedClaim"></div>
+          <div class="tabs" role="tablist" aria-label="Claim detail views">
+            <button class="tab active" id="tab-checks" role="tab" type="button" data-tab="checks" aria-selected="true" aria-controls="view-checks">Validation</button>
+            <button class="tab" id="tab-raw" role="tab" type="button" data-tab="raw" aria-selected="false" aria-controls="view-raw" tabindex="-1">Raw data</button>
+            <button class="tab" id="tab-source" role="tab" type="button" data-tab="source" aria-selected="false" aria-controls="view-source" tabindex="-1">Python source</button>
+          </div>
+          <div class="inspector-view" id="view-checks" role="tabpanel" aria-labelledby="tab-checks"></div>
+          <div class="inspector-view" id="view-raw" role="tabpanel" aria-labelledby="tab-raw" hidden></div>
+          <div class="inspector-view source-view" id="view-source" role="tabpanel" aria-labelledby="tab-source" hidden>
+            <label class="source-selector-label" for="sourceSelect">FUNCTION SNAPSHOT</label>
+            <select id="sourceSelect" aria-label="Python function to inspect"></select>
+            <div class="source-location" id="sourceLocation"></div>
+            <pre class="source-code" id="sourceCode" tabindex="0" aria-label="Saved Python source code"></pre>
+            <p class="source-footnote">Source and results are captured together on each run. Edit in VS Code, save, then run again.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="trace-panel" id="trace-section" aria-labelledby="traceTitle">
+        <div class="trace-heading">
+          <div><div class="eyebrow">03 / THE EXECUTION</div><h2 id="traceTitle">Nothing up our sleeve.<span> Just Python.</span></h2></div>
+          <span class="trace-chip" id="traceChip">AWAITING FIRST RUN</span>
+        </div>
+        <div class="exception-banner" id="exceptionBanner" hidden>
+          <svg class="icon"><use href="#i-alert"/></svg>
+          <div><strong id="exceptionTitle"></strong><p id="exceptionMessage"></p></div>
+          <button class="button button-error" id="inspectErrorButton" type="button">Inspect exception <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="trace-body">
+          <div class="trace-log" id="traceLog" tabindex="0" role="region" aria-label="Recorded Python execution events"></div>
+          <aside class="trace-explainer">
+            <span class="terminal-label"><span></span><span></span><span></span> BACKEND NOTES</span>
+            <h3 id="traceNoteTitle">A window into the work.</h3>
+            <p id="traceNote">Run checks to watch the actual Python pipeline. Select any claim to see arguments, return values, and the code behind each decision.</p>
+            <div class="trace-facts"><span>RUNTIME <strong>Python 3.10+</strong></span><span>FRAMEWORKS <strong>None</strong></span><span>DATA LEAVES DEVICE <strong>Never</strong></span></div>
+          </aside>
+        </div>
+        <details class="traceback-details" id="tracebackDetails" hidden><summary>Full Python traceback</summary><pre id="tracebackText" tabindex="0"></pre></details>
+        <div class="trace-footer"><span id="traceFooter">A real execution trace, not simulated results.</span><span>CSV <svg class="icon"><use href="#i-arrow"/></svg> PYTHON <svg class="icon"><use href="#i-arrow"/></svg> UNDERSTANDING</span></div>
+      </section>
+
+      <footer class="page-footer"><span class="footer-brand"><span class="tiny-square"></span> CLAIMS LAB</span><span>Built for a little less guessing. And a lot more understanding.</span><span>GitHub Copilot Essentials</span></footer>
+    </main>
+  <noscript><div class="noscript-message">Enable JavaScript to use Claims Lab. The original Python command-line exercise still works without it.</div></noscript>
+</body>
+</html>

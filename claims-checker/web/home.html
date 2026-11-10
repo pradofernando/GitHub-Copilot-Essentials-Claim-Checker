@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c34">
+  <meta name="description" content="An open-book Python claims checker. Meet the fictional data, follow the actual code, and understand every flag.">
+  <title>Claims Lab | A little claim. A big aha.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23153d3b'/%3E%3Cpath d='M9 10h14v4H9zm0 8h6v4H9zm10 0h4v4h-4z' fill='%239aebc4'/%3E%3C/svg%3E">
+  <script src="/ui.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/home.css">
+  <script src="/home.js" type="module"></script>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#home-content">Skip to content</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="h-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="h-diagonal" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
+    <symbol id="h-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="h-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 19"/></symbol>
+    <symbol id="h-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="h-play" viewBox="0 0 24 24"><path d="m8 4 13 8-13 8z"/></symbol>
+    <symbol id="h-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  </svg>
+
+  <!-- SITE_HEADER -->
+
+  <main id="home-content" tabindex="-1">
+    <section class="home-hero home-container" aria-labelledby="homeTitle">
+      <div class="home-hero-copy">
+        <div class="home-kicker"><span></span> AN OPEN-BOOK PYTHON DEMO</div>
+        <h1 id="homeTitle">A little claim.<br>A big <em>aha.</em></h1>
+        <p class="home-intro">Meet the claims checker with the hood left open.</p>
+        <p class="home-description">Follow fictional healthcare claims through real Python code.
+          See the data going in, the rules being called, and the reasons coming out.
+          No black box. No background in healthcare required.</p>
+        <div class="home-hero-actions">
+          <a class="home-button home-button-dark" href="/lab" data-workbench-link>Open the workbench <svg class="icon" aria-hidden="true"><use href="#h-arrow"/></svg></a>
+          <a class="home-text-link" href="#live-example"><span class="home-play-circle"><svg class="icon" aria-hidden="true"><use href="#h-play"/></svg></span> Follow one claim</a>
+        </div>
+        <div class="home-reassurance"><span class="home-small-check"><svg class="icon" aria-hidden="true"><use href="#h-check"/></svg></span> Fake claims. Real code. Everything stays on your device.</div>
+      </div>
+
+      <div class="hero-art" role="img" aria-label="Illustrated flow: a row from the sample CSV goes into Python and becomes an inspectable result.">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <svg class="art-connectors" viewBox="0 0 600 530" fill="none" aria-hidden="true">
+          <path d="M75 91C34 169 105 205 180 190M353 214C516 171 556 272 485 322M385 405C344 476 216 488 183 421" stroke="#719578" stroke-width="1.5" stroke-dasharray="5 6"/>
+          <path d="m168 180 13 11-16 5m323 111-5 16 16-5M196 425l-14-6-1 16" stroke="#719578" stroke-width="1.5"/>
+        </svg>
+        <div class="art-file"><svg class="icon" aria-hidden="true"><use href="#h-file"/></svg><span><small>IT STARTS WITH A FILE</small>sample_claims.csv</span><span class="file-corner">.csv</span></div>
+        <div class="art-stamp"><span>100%</span> FICTIONAL<br><small>0% PATIENT DATA</small></div>
+        <article class="art-claim" aria-hidden="true">
+          <div class="art-claim-top"><span>SAMPLE CLAIM</span><span class="paper-clip"></span></div>
+          <strong data-claim-field="claim_id">Loading sample...</strong>
+          <p data-claim-field="provider_name">A fictional provider</p>
+          <div class="art-claim-fields"><div><span>PROVIDER NPI</span><b data-claim-field="provider_npi">----------</b></div><div><span>STATE</span><b data-claim-field="state">--</b></div></div>
+          <div class="art-claim-rule"></div>
+          <div class="art-claim-bottom"><span>ONE ROW.<br>PLENTY TO EXPLORE.</span><strong data-claim-field="billed_amount" data-money>--</strong></div>
+          <span class="art-paper-holes"><i></i><i></i><i></i></span>
+        </article>
+        <div class="art-python"><div><span class="python-dot"></span> INSIDE PYTHON <span>02</span></div><code>problems = validate_claim(row)<br><span>print</span>(problems)</code><p>Not a verdict from thin air.<br>A decision you can inspect.</p></div>
+        <div class="art-note">The interesting part?<br><em>You can see the thinking.</em><svg viewBox="0 0 70 42" fill="none" aria-hidden="true"><path d="M3 32C42 45 60 14 60 5m-10 5 11-7 6 12" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <span class="art-caption">A SMALL ILLUSTRATION OF THE JOURNEY. REAL EXECUTION BELOW.</span>
+      </div>
+    </section>
+
+    <div class="home-proof-strip">
+      <div class="home-container home-proof-inner">
+        <span><strong id="homeClaimCount">--</strong> <span>synthetic claims<br><small>ONE SMALL CSV</small></span></span>
+        <span><svg class="icon" aria-hidden="true"><use href="#h-code"/></svg><span>Actual Python<br><small>NOT BROWSER-SIDE GUESSWORK</small></span></span>
+        <span><svg class="icon" aria-hidden="true"><use href="#h-eye"/></svg><span>Nothing hidden<br><small>INPUTS, RETURNS &amp; SOURCE</small></span></span>
+        <span class="proof-classroom">BUILT FOR<br><strong>the curious.</strong></span>
+      </div>
+    </div>
+
+    <section class="home-about home-container" id="about" aria-labelledby="aboutTitle">
+      <div class="section-index">01 <span>/ THE IDEA</span></div>
+      <div class="about-grid">
+        <div>
+          <h2 id="aboutTitle">Less &ldquo;it failed.&rdquo;<br>More <em>&ldquo;here&rsquo;s why.&rdquo;</em></h2>
+          <p>Claims Lab is a small, deliberately unfinished Python project for a
+            GitHub Copilot Essentials class. The interface turns its inner workings
+            into something the whole room can follow.</p>
+          <p>You don&rsquo;t need to know Medicare to get it. You just need a row
+            of data, a few questions, and a way to see the answers.</p>
+        </div>
+        <div class="claim-definition">
+          <span class="definition-label">FIRST THINGS FIRST</span>
+          <h3>What&rsquo;s a claim, anyway?</h3>
+          <p>Think of it as a request to pay for a healthcare service.
+            In this demo, it&rsquo;s simply one fictional row with:</p>
+          <div class="definition-fields"><span><i>01</i> Who provided the service</span><span><i>02</i> What was done, and when</span><span><i>03</i> How much was billed</span></div>
+          <div class="definition-footnote">We check the data. We don&rsquo;t approve payments or make medical decisions.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-how home-container" id="how-it-works" aria-labelledby="howTitle">
+      <div class="section-index">02 <span>/ THE JOURNEY</span></div>
+      <div class="how-heading"><h2 id="howTitle">From a comma-separated file<br>to a much clearer picture.</h2><p>Three Python steps.<br>Every one open to inspection.</p></div>
+      <div class="how-steps">
+        <article class="how-step"><span class="how-number">01<span>&rarr;</span></span><div class="how-icon"><svg class="icon" aria-hidden="true"><use href="#h-file"/></svg></div><h3>Meet the data.</h3><p>Python reads the CSV and turns each row into a dictionary: named fields such as provider NPI, service date, state, and billed amount.</p><code>load_claims(path)</code><span class="how-caption">A FILE BECOMES ROWS</span></article>
+        <article class="how-step"><span class="how-number">02<span>&rarr;</span></span><div class="how-icon"><svg class="icon" aria-hidden="true"><use href="#h-code"/></svg></div><h3>Follow the rules.</h3><p>Python checks the NPI (a 10-digit provider ID), dates, and state. Each function returns True if its current rule passes, or False if it doesn&rsquo;t. The claim validator collects the problem messages.</p><code>validate_claim(row)</code><span class="how-caption">ROWS BECOME QUESTIONS</span></article>
+        <article class="how-step"><span class="how-number">03<span>&#8599;</span></span><div class="how-icon"><svg class="icon" aria-hidden="true"><use href="#h-eye"/></svg></div><h3>See the whole story.</h3><p>Python tries to count valid and flagged claims and total the billing. If it raises an error, you see the exception and source, not a pretend success.</p><code>summarize(claims)</code><span class="how-caption">ANSWERS BECOME UNDERSTANDING</span></article>
+      </div>
+      <p class="how-aside"><span>*</span> A flag means the current code returned a problem. It isn&rsquo;t a payment decision, and it doesn&rsquo;t mean every possible rule has been implemented.</p>
+    </section>
+
+    <section class="home-example" id="live-example" aria-labelledby="exampleTitle">
+      <div class="home-container">
+        <div class="section-index">03 <span>/ YOUR TURN</span><span class="example-live-label"><span></span><b id="homeConnection">LOCAL PYTHON CONNECTION</b></span></div>
+        <div class="example-heading"><div><h2 id="exampleTitle">One row.<br>The whole <em>journey.</em></h2><p>Pick a fictional claim. Ask Python what it thinks.<br>Then look at exactly how it got there.</p></div><span class="example-handnote">Go on. Press the button.<svg viewBox="0 0 90 60" fill="none" aria-hidden="true"><path d="M3 5C70-8 99 30 55 53m4-15-6 17 20-2" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+        <div class="example-error" id="homeError" role="alert" hidden></div>
+        <p class="sr-only" id="homeAnnouncement" role="status" aria-live="polite"></p>
+        <div class="example-grid">
+          <article class="example-input">
+            <div class="example-card-label"><span class="example-dot"></span> THE INPUT <span>READ FROM YOUR CSV</span></div>
+            <label for="exampleClaimSelect">Choose a sample claim</label>
+            <select id="exampleClaimSelect" disabled><option>Loading the sample...</option></select>
+            <div class="example-claim-heading"><strong data-claim-field="claim_id">--</strong><span>FAKE DATA</span></div>
+            <p class="example-provider" data-claim-field="provider_name">Loading the fictional provider...</p>
+            <dl class="example-fields">
+              <div><dt>Provider NPI</dt><dd data-claim-field="provider_npi">--</dd></div>
+              <div><dt>State</dt><dd data-claim-field="state">--</dd></div>
+              <div><dt>Service date</dt><dd data-claim-field="date_of_service">--</dd></div>
+              <div><dt>Submitted</dt><dd data-claim-field="date_submitted">--</dd></div>
+              <div><dt>Procedure code</dt><dd data-claim-field="procedure_code">--</dd></div>
+              <div><dt>Billed amount</dt><dd data-claim-field="billed_amount" data-money>--</dd></div>
+            </dl>
+            <button class="home-button home-button-dark example-run" id="exampleRunButton" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#h-play"/></svg><span>Loading sample...</span></button>
+            <p class="example-input-note">Runs the real sample batch and focuses on this claim. Nothing is uploaded or cleaned behind the scenes.</p>
+          </article>
+          <article class="example-output" aria-labelledby="outputTitle">
+            <div class="example-output-heading"><span class="example-card-label" id="outputTitle">THE PYTHON RESPONSE</span><span class="example-verdict pending" id="exampleVerdict">AWAITING A RUN</span></div>
+            <div class="example-checks" id="exampleChecks"></div>
+            <div class="example-problems" id="exampleProblems"></div>
+            <div class="example-report" id="exampleReport" hidden></div>
+            <details class="example-source" id="exampleSource">
+              <summary>Peek at the actual Python source <svg class="icon" aria-hidden="true"><use href="#h-code"/></svg></summary>
+              <label for="exampleSourceSelect" class="sr-only">Python function source</label>
+              <select id="exampleSourceSelect"></select>
+              <span class="example-source-location" id="exampleSourceLocation"></span>
+              <pre id="exampleSourceCode" tabindex="0" aria-label="Actual Python function source"></pre>
+            </details>
+            <div class="example-output-footer"><span id="exampleCapture">Waiting for the local CSV.</span><a id="exampleWorkbench" href="/lab#claims-section" data-workbench-link>Inspect in the workbench <svg class="icon" aria-hidden="true"><use href="#h-arrow"/></svg></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-closing home-container" aria-labelledby="closingTitle">
+      <span class="closing-spark" aria-hidden="true">&#10035;</span>
+      <div><div class="home-kicker">CURIOSITY LOOKS GOOD ON YOU.</div><h2 id="closingTitle">Don&rsquo;t just run the code.<br><em>Get to know it.</em></h2><p>Explore a claim. Explain a function. Trace an exception.<br>Then use Copilot to help you ask the next good question.</p></div>
+      <a class="home-button home-button-dark" href="/lab" data-workbench-link>Let&rsquo;s open the workbench <svg class="icon" aria-hidden="true"><use href="#h-arrow"/></svg></a>
+    </section>
+  </main>
+
+  <footer class="home-footer"><div class="home-container"><span>claims<strong>lab</strong> <small>A CLOSER LOOK.</small></span><span>A learning tool. Not a production claims system.</span><span>GITHUB COPILOT ESSENTIALS <i>/</i> LOCAL &amp; SYNTHETIC</span></div></footer>
+  <noscript><div class="noscript-message">Enable JavaScript for the live Python example. You can still read the walkthrough above or use the original command-line exercise.</div></noscript>
+</body>
+</html>
