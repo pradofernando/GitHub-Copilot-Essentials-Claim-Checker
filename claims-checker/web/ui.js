@@ -29,7 +29,7 @@
       button.querySelector("[data-theme-label]").textContent = `${next === "dark" ? "Dark" : "Light"} mode`;
     }
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = theme === "dark" ? "#10231b" : "#f6f5ef";
+    if (meta) meta.content = theme === "dark" ? "#101f33" : "#f2f6fc";
   }
 
   function syncNavigation() {
