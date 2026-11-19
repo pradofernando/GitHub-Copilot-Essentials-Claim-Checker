@@ -48,4 +48,7 @@ def validate_claim(row):
     if not is_valid_state(row.get("state", "")):
         problems.append("State must be a two-letter US state code.")
 
+    if len(row.get("procedure_code") or "") != 5:
+        problems.append("Procedure code must be exactly 5 characters.")
+
     return problems
